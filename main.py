@@ -1,9 +1,11 @@
 import streamlit as st
 from apps.csv_converter import main as csv_converter_app
+from apps.new_converter import main as new_converter_app
 
 # Dictionary of available apps
 APPS = {
     "CSV to XLSX Converter": csv_converter_app,
+    "New Converter": new_converter_app,
 }
 
 def main():
