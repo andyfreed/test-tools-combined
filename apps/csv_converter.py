@@ -3,17 +3,18 @@ import pandas as pd
 import io
 from utils import process_file
 from openpyxl.styles import numbers, Border, Side
+from shared.common import app_header, app_footer, display_success
 
 def main():
-    st.title("CSV to XLSX Converter")
-    st.write("""
-    This application converts CSV files to XLSX format with specific column mapping:
-    - CFP Board Course ID → CFP Program ID (General format, no commas)
-    - Completed → Date Individual Completed (Short date format)
-    - License number → Attendee CFP Board ID (General format, no commas)
-    - Last name → attendee last name
-    - First name → attendee first name
-    """)
+    app_header(
+        "CSV to XLSX Converter",
+        """This application converts CSV files to XLSX format with specific column mapping:
+        - CFP Board Course ID → CFP Program ID (General format, no commas)
+        - Completed → Date Individual Completed (Short date format)
+        - License number → Attendee CFP Board ID (General format, no commas) 
+        - Last name → attendee last name
+        - First name → attendee first name"""
+    )
 
     uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
 
@@ -23,7 +24,7 @@ def main():
             df = pd.read_csv(uploaded_file)
 
             # Show input data preview
-            st.subheader("Input Data Preview")
+            st.markdown('<div class="sub-header">Input Data Preview</div>', unsafe_allow_html=True)
             st.dataframe(df.head())
 
             try:
@@ -31,7 +32,7 @@ def main():
                 df_processed = process_file(df)
 
                 # Show processed data preview
-                st.subheader("Processed Data Preview")
+                st.markdown('<div class="sub-header">Processed Data Preview</div>', unsafe_allow_html=True)
                 st.dataframe(df_processed.head())
 
                 # Create download button
@@ -60,9 +61,9 @@ def main():
 
                     # Remove cell borders for all cells
                     no_border = Border(left=Side(style=None), 
-                                        right=Side(style=None),
-                                        top=Side(style=None),
-                                        bottom=Side(style=None))
+                                       right=Side(style=None),
+                                       top=Side(style=None),
+                                       bottom=Side(style=None))
 
                     for row in worksheet.rows:
                         for cell in row:
@@ -89,11 +90,12 @@ def main():
                 )
 
                 # Show success message with statistics
-                st.success(f"""
+                success_msg = f"""
                 Conversion completed successfully!
                 - Total records processed: {len(df_processed)}
                 - Columns mapped: {len(df_processed.columns)}
-                """)
+                """
+                display_success(success_msg)
 
             except ValueError as e:
                 st.error(f"Error processing file: {str(e)}")
@@ -102,6 +104,8 @@ def main():
 
         except Exception as e:
             st.error(f"Error reading CSV file: {str(e)}")
+    
+    app_footer()
 
 if __name__ == "__main__":
     main()
