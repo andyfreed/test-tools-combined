@@ -1,0 +1,20 @@
+name: file-converter-tools
+region: nyc
+services:
+- name: web
+  github:
+    repo: andyfreed/CsvXlsxTransformer
+    branch: main
+  buildpacks:
+    - name: python
+  instance_count: 1
+  instance_size_slug: basic-xs
+  envs:
+  - key: STREAMLIT_SERVER_PORT
+    value: "8080"
+  - key: STREAMLIT_SERVER_ADDRESS
+    value: "0.0.0.0"
+  - key: PORT
+    value: "8080"
+  routes:
+  - path: / 
