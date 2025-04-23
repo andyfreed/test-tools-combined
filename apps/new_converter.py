@@ -1,12 +1,8 @@
 import streamlit as st
 
 def main():
-    st.set_page_config(
-        page_title="Your New Converter",
-        page_icon="🔄",
-        layout="wide"
-    )
-
+    # st.set_page_config() removed to prevent conflicts with main.py
+    
     st.title("Your New Converter")
     st.write("""
     This is where your new converter's description will go.

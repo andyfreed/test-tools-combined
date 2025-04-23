@@ -5,12 +5,6 @@ from utils import process_file
 from openpyxl.styles import numbers, Border, Side
 
 def main():
-    st.set_page_config(
-        page_title="CSV to XLSX Converter",
-        page_icon="📊",
-        layout="wide"
-    )
-
     st.title("CSV to XLSX Converter")
     st.write("""
     This application converts CSV files to XLSX format with specific column mapping:
