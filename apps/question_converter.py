@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from utils import validate_raw_csv, transform_csv, get_csv_preview, convert_df_to_csv
+from shared.question_utils import validate_raw_csv, transform_csv, get_csv_preview, convert_df_to_csv
 import io
 import zipfile
 import base64

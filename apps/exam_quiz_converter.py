@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import io
-from parser import ExamParser
+from shared.parser import ExamParser
 import chardet
 from docx import Document
 import re
