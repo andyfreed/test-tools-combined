@@ -30,6 +30,84 @@ def set_page_style():
             font-size: 1.5rem;
             font-weight: bold;
             margin-bottom: 1rem;
+            color: #1e88e5;
+        }
+        
+        /* Enhanced Sidebar Styling */
+        .css-1d391kg, .css-12oz5g7, [data-testid="stSidebar"] {
+            background-color: #f8f9fa;
+            border-right: 1px solid #e9ecef;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+        }
+        
+        /* Sidebar animation */
+        @media (max-width: 992px) {
+            [data-testid="stSidebar"] {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                z-index: 1000;
+            }
+            .sidebar-collapsed [data-testid="stSidebar"] {
+                transform: translateX(-100%);
+                box-shadow: none;
+            }
+            /* Main content shift when sidebar is open */
+            .main .block-container {
+                transition: padding-left 0.3s ease, margin-left 0.3s ease;
+            }
+            .sidebar-collapsed .main .block-container {
+                padding-left: 1rem !important;
+                margin-left: 0 !important;
+            }
+        }
+        
+        /* Sidebar toggle button animation */
+        .sidebar-toggle {
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .sidebar-collapsed .sidebar-toggle {
+            transform: rotate(90deg);
+        }
+        .sidebar-toggle:hover {
+            background-color: #0d47a1 !important;
+        }
+        
+        /* Sidebar items styling */
+        .stRadio > div {
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            transition: background-color 0.2s;
+        }
+        .stRadio > div:hover {
+            background-color: #e3f2fd;
+        }
+        
+        /* Styling for sidebar dividers */
+        .sidebar .markdown-text-container hr {
+            margin: 20px 0;
+            border: 0;
+            height: 1px;
+            background: #e0e0e0;
+        }
+        
+        /* Improved navigation section */
+        .sidebar h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #455a64;
+            margin-top: 1rem;
+        }
+        
+        /* Active navigation item */
+        .stRadio [data-baseweb="radio"] input:checked + div {
+            background-color: #bbdefb;
+            border-color: #1e88e5;
+        }
+        
+        /* Sidebar content padding */
+        [data-testid="stSidebar"] .block-container {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
         }
     </style>
     """, unsafe_allow_html=True)
