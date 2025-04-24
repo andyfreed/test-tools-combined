@@ -40,6 +40,52 @@ def set_page_style():
             box-shadow: 2px 0 5px rgba(0,0,0,0.05);
         }
         
+        /* Fix sidebar text color */
+        [data-testid="stSidebar"] {
+            color: #333333;
+        }
+        
+        [data-testid="stSidebar"] .stMarkdown {
+            color: #333333;
+        }
+        
+        /* Override all text colors in sidebar */
+        [data-testid="stSidebar"] * {
+            color: #333333 !important;
+        }
+        
+        /* Set the header color back to blue for contrast */
+        [data-testid="stSidebar"] .sidebar-header {
+            color: #1e88e5 !important;
+        }
+        
+        /* Radio button text color fix */
+        .stRadio label {
+            color: #333333 !important;
+        }
+        
+        /* Radio button icon color fix */
+        .stRadio [data-baseweb="radio"] div[role="radiogroup"] div {
+            color: #333333 !important;
+        }
+        
+        /* Force icon colors in the radio buttons */
+        .stRadio [data-baseweb="radio"] [data-testid="stMarkdownContainer"] span {
+            color: #333333 !important;
+        }
+        
+        /* Fix sidebar markdown text */
+        .sidebar .markdown-text-container p,
+        .sidebar p,
+        .sidebar .element-container {
+            color: #333333 !important;
+        }
+        
+        /* Make sure H3 titles have good contrast */
+        .sidebar h3 {
+            color: #1e88e5 !important;
+        }
+        
         /* Sidebar animation */
         @media (max-width: 992px) {
             [data-testid="stSidebar"] {
@@ -94,7 +140,6 @@ def set_page_style():
         .sidebar h3 {
             font-size: 1.2rem;
             font-weight: 600;
-            color: #455a64;
             margin-top: 1rem;
         }
         
